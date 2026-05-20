@@ -860,7 +860,6 @@
             .featured-thumb { height: 240px; }
             .services-grid { grid-template-columns: 1fr 1fr; }
             .client-cards-grid { grid-template-columns: 1fr; }
-            .results-grid { grid-template-columns: 1fr 1fr; }
             .inquiry-wrap { grid-template-columns: 1fr; gap: 40px; }
             .footer-top { grid-template-columns: 1fr; text-align: center; }
             .footer-contact { text-align: center; }
@@ -900,16 +899,6 @@
             .id-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; justify-items: start; }
             .stat-val { font-size: 0.95rem; }
             .stat-label { font-size: 0.65rem; }
-
-            /* Results strip */
-            .results-strip { padding: 40px 5%; }
-            .results-grid { grid-template-columns: 1fr 1fr; }
-            .result-item { padding: 16px 8px; }
-            .result-num { font-size: 1.6rem; }
-            .result-label { font-size: 0.7rem; }
-            .result-item:nth-child(2)::after { display: none; }
-            .result-item:nth-child(1),
-            .result-item:nth-child(2) { border-bottom: 1px solid var(--border-color); }
 
             /* Sections padding */
             .work-section { padding: 50px 4%; }
@@ -1010,7 +999,6 @@
             .inquiry-section { padding: 40px 4%; }
             .featured-title { font-size: 1.2rem; }
             .card-title { font-size: 1rem; }
-            .result-num { font-size: 1.4rem; }
             .section-title { font-size: 1.5rem; }
         }
         /* ═══════════════════════════════════════
@@ -1152,42 +1140,39 @@
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
         /* ═══════════════════════════════════════
-           RESULTS NUMBER STRIP
+           SILICON VALLEY TAGLINE BANNER
         ═══════════════════════════════════════ */
-        .results-strip {
-            padding: 60px 8%;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            background: var(--card-bg);
+        .sv-banner {
+            background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(168,85,247,0.06) 100%);
+            border-top: 1px solid rgba(59,130,246,0.15);
+            border-bottom: 1px solid rgba(168,85,247,0.15);
+            padding: 18px 8%; display: flex; align-items: center;
+            justify-content: center; gap: 14px; flex-wrap: wrap; text-align: center;
         }
-        .results-grid {
-            display: grid; grid-template-columns: repeat(4,1fr);
-            gap: 0; text-align: center;
+        .sv-pulse {
+            width: 9px; height: 9px; border-radius: 50%; background: #a855f7;
+            box-shadow: 0 0 10px #a855f7; flex-shrink: 0;
+            animation: pulse-dot 1.4s infinite;
         }
-        .result-item {
-            padding: 20px 10px; position: relative;
+        .sv-text {
+            font-size: 0.85rem; font-weight: 700; color: var(--text-muted);
+            line-height: 1.4;
         }
-        .result-item:not(:last-child)::after {
-            content: ''; position: absolute; right: 0; top: 20%; bottom: 20%;
-            width: 1px; background: var(--border-color);
+        .sv-text strong { color: var(--text-main); }
+        .sv-text em {
+            color: #a855f7; font-style: normal; font-weight: 800;
+            background: rgba(168,85,247,0.1); padding: 1px 8px;
+            border-radius: 50px; border: 1px solid rgba(168,85,247,0.2);
         }
-        .result-num {
-            font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 900;
-            font-family: var(--font-display); color: var(--text-main);
-            letter-spacing: -1px; line-height: 1; margin-bottom: 8px;
-        }
-        .result-num span { color: var(--accent); }
-        .result-label {
-            font-size: 0.78rem; color: var(--text-muted); font-weight: 600;
-            text-transform: uppercase; letter-spacing: 1px; line-height: 1.4;
+        .sv-badge {
+            font-size: 0.68rem; font-weight: 800; padding: 4px 12px;
+            border-radius: 50px; background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.25); color: #a855f7;
+            text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
         }
         @media (max-width: 768px) {
-            .results-grid { grid-template-columns: 1fr 1fr; gap: 0; }
-            .result-item:nth-child(2)::after { display: none; }
-            .result-item:nth-child(2) { border-right: none; }
-            .result-item:nth-child(1), .result-item:nth-child(2) {
-                border-bottom: 1px solid var(--border-color);
-            }
+            .sv-banner { padding: 14px 5%; gap: 10px; }
+            .sv-text { font-size: 0.78rem; }
         }
 
         /* ═══════════════════════════════════════
@@ -1555,26 +1540,14 @@
             <div class="ticker-track" id="ticker"></div>
         </div>
 
-        <!-- RESULTS NUMBER STRIP -->
-        <div class="results-strip">
-            <div class="results-grid">
-                <div class="result-item">
-                    <div class="result-num">7<span>+</span></div>
-                    <div class="result-label">Clients Served<br>& Active</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-num">960<span>K+</span></div>
-                    <div class="result-label">Impressions<br>Last 28 Days</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-num">13</div>
-                    <div class="result-label">Strategic Case<br>Studies Published</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-num">2<span>+</span></div>
-                    <div class="result-label">Paid Brand<br>Collaborations</div>
-                </div>
-            </div>
+        <!-- SILICON VALLEY TAGLINE BANNER -->
+        <div class="sv-banner">
+            <div class="sv-pulse"></div>
+            <p class="sv-text">
+                <strong>Currently in early-stage talks</strong> with a <em>Big Silicon Tech</em> professional for GTM Strategy —
+                manifesting the deal. First step started. 🚀
+            </p>
+            <span class="sv-badge">🤝 Live Negotiation</span>
         </div>
 
         <!-- SERVICES SECTION -->
