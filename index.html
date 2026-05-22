@@ -1176,6 +1176,117 @@
         }
 
         /* ═══════════════════════════════════════
+           SILICON VALLEY CLIENT FEATURE
+        ═══════════════════════════════════════ */
+        .sv-feature {
+            padding: 80px 8%;
+            border-top: 1px solid var(--border-color);
+            position: relative; overflow: hidden;
+        }
+        .sv-feature::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 60% 50%, rgba(59,130,246,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .sv-feature-inner {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center;
+        }
+        .sv-feature-left { display: flex; flex-direction: column; gap: 24px; }
+        .sv-live-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+            padding: 6px 16px; border-radius: 50px; width: fit-content;
+        }
+        .sv-live-dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+            box-shadow: 0 0 8px #22c55e; animation: pulse-dot 1.2s infinite;
+        }
+        .sv-live-text {
+            font-size: 0.72rem; font-weight: 800; color: #22c55e;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        .sv-feature-title {
+            font-size: clamp(2rem, 4vw, 3rem); font-family: var(--font-display);
+            font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+            color: var(--text-main);
+        }
+        .sv-feature-title .highlight {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .sv-feature-subtitle {
+            font-size: 1rem; color: var(--text-muted); line-height: 1.7;
+        }
+        .sv-feature-subtitle strong { color: var(--text-main); }
+        .sv-stats-row {
+            display: flex; gap: 24px; flex-wrap: wrap;
+        }
+        .sv-stat {
+            display: flex; flex-direction: column; gap: 3px;
+        }
+        .sv-stat-val {
+            font-size: 1.3rem; font-weight: 900; font-family: var(--font-display);
+            color: var(--accent); letter-spacing: -0.02em;
+        }
+        .sv-stat-label {
+            font-size: 0.68rem; color: var(--text-muted); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .sv-divider {
+            width: 1px; background: var(--border-color); align-self: stretch;
+        }
+        .sv-quote {
+            border-left: 2px solid var(--accent); padding-left: 16px;
+        }
+        .sv-quote p {
+            font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;
+            font-style: italic;
+        }
+        .sv-quote cite {
+            font-size: 0.72rem; color: var(--accent); font-weight: 800;
+            font-style: normal; text-transform: uppercase; letter-spacing: 1px;
+            display: block; margin-top: 6px;
+        }
+        /* Image side */
+        .sv-feature-right { position: relative; }
+        .sv-image-wrap {
+            position: relative; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(59,130,246,0.15);
+            border: 1px solid rgba(59,130,246,0.2);
+        }
+        .sv-image-wrap img {
+            width: 100%; display: block;
+            border-radius: 20px;
+        }
+        .sv-image-badge {
+            position: absolute; bottom: 16px; left: 16px;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            border: 1px solid rgba(34,197,94,0.4); border-radius: 12px;
+            padding: 10px 16px; display: flex; align-items: center; gap: 8px;
+        }
+        .sv-image-badge-dot {
+            width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+            box-shadow: 0 0 6px #22c55e; animation: pulse-dot 1.2s infinite; flex-shrink: 0;
+        }
+        .sv-image-badge-text {
+            font-size: 0.72rem; font-weight: 800; color: #fff; line-height: 1.3;
+        }
+        .sv-image-badge-sub {
+            font-size: 0.62rem; color: rgba(255,255,255,0.6); font-weight: 600;
+        }
+        @media (max-width: 1024px) {
+            .sv-feature-inner { grid-template-columns: 1fr; gap: 36px; }
+            .sv-feature { padding: 60px 8%; }
+        }
+        @media (max-width: 768px) {
+            .sv-feature { padding: 50px 5%; }
+            .sv-feature-title { font-size: 2rem; }
+            .sv-stats-row { gap: 16px; }
+            .sv-stat-val { font-size: 1.1rem; }
+        }
+
+        /* ═══════════════════════════════════════
            SERVICES SECTION
         ═══════════════════════════════════════ */
         .services-section {
@@ -1540,15 +1651,71 @@
             <div class="ticker-track" id="ticker"></div>
         </div>
 
-        <!-- SILICON VALLEY TAGLINE BANNER -->
-        <div class="sv-banner">
-            <div class="sv-pulse"></div>
-            <p class="sv-text">
-                <strong>Currently in early-stage talks</strong> with a <em>Big Silicon Tech</em> professional for GTM Strategy —
-                manifesting the deal. First step started. 🚀
-            </p>
-            <span class="sv-badge">🤝 Live Negotiation</span>
-        </div>
+        <!-- SILICON VALLEY CLIENT — FEATURED -->
+        <section class="sv-feature">
+            <div class="sv-feature-inner">
+
+                <div class="sv-feature-left">
+                    <div class="sv-live-badge">
+                        <div class="sv-live-dot"></div>
+                        <span class="sv-live-text">Currently Active · Work In Progress</span>
+                    </div>
+
+                    <h2 class="sv-feature-title">
+                        First<br>
+                        <span class="highlight">International</span><br>
+                        Client.
+                    </h2>
+
+                    <p class="sv-feature-subtitle">
+                        Building <strong>GTM Strategy</strong> for a <strong>Silicon Valley</strong> product — a fresh startup by a Big Tech professional. Started with a $250 paid trial week. Work has begun.
+                        <br><br>
+                        From LinkedIn content → real global opportunities.
+                    </p>
+
+                    <div class="sv-stats-row">
+                        <div class="sv-stat">
+                            <div class="sv-stat-val">$250</div>
+                            <div class="sv-stat-label">Trial Week</div>
+                        </div>
+                        <div class="sv-divider"></div>
+                        <div class="sv-stat">
+                            <div class="sv-stat-val">🌍</div>
+                            <div class="sv-stat-label">International</div>
+                        </div>
+                        <div class="sv-divider"></div>
+                        <div class="sv-stat">
+                            <div class="sv-stat-val">GTM</div>
+                            <div class="sv-stat-label">Strategy Role</div>
+                        </div>
+                        <div class="sv-divider"></div>
+                        <div class="sv-stat">
+                            <div class="sv-stat-val">🚀</div>
+                            <div class="sv-stat-label">Active Now</div>
+                        </div>
+                    </div>
+
+                    <div class="sv-quote">
+                        <p>"The plan for digital outreach — DMs, niche community posts, and LinkedIn content — is exactly what we need. We want to delegate 100% of that people-facing work to you."</p>
+                        <cite>— Silicon Valley Client · Recite App</cite>
+                    </div>
+                </div>
+
+                <div class="sv-feature-right">
+                    <div class="sv-image-wrap">
+                        <img src="silicon-client.png" alt="First International Client — Silicon Valley GTM Strategy" loading="lazy">
+                        <div class="sv-image-badge">
+                            <div class="sv-image-badge-dot"></div>
+                            <div>
+                                <div class="sv-image-badge-text">Work Started · Agreement Reached</div>
+                                <div class="sv-image-badge-sub">Silicon Valley · GTM Strategy Partnership</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
         <!-- SERVICES SECTION -->
         <section class="services-section" id="services">
@@ -1885,7 +2052,7 @@
                         <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 16px;">
                             <div class="client-status" style="background: rgba(100,116,139,0.1); color: #94a3b8; border: 1px solid rgba(100,116,139,0.2);">
                                 <div class="status-dot" style="background: #94a3b8; box-shadow: none; animation: none;"></div>
-                                Connection Active · New Silicon Tech Opportunity
+                                ✅ International Client · Work In Progress
                             </div>
                             <div class="client-header">
                                 <div class="client-avatar" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff); color: #7e22ce;">OB</div>
@@ -1898,9 +2065,9 @@
                         </div>
                         <div style="flex: 2; min-width: 280px; display: flex; flex-direction: column; gap: 16px;">
                             <div>
-                                <div class="client-work-tag">Active · Silicon Tech GTM Proposal</div>
+                                <div class="client-work-tag">✅ Deal Closed · GTM Work Active</div>
                                 <div class="client-work-title">GTM Strategy for Lab0.ai — Y Combinator-Backed AI Startup</div>
-                                <div class="client-work-desc">Discovered Lab0.ai's team on X, reached out proactively, and connected with Onkar — an IIT Bombay CSE graduate whose team earned a Y Combinator entry. Connection maintained. <strong style="color:var(--accent);">Currently in early-stage GTM proposal discussions with a Big Silicon Tech professional — manifesting this deal.</strong></div>
+                                <div class="client-work-desc">Discovered Lab0.ai's team on X, reached out proactively, and connected with Onkar — an IIT Bombay CSE graduate whose team earned a Y Combinator entry. Connection maintained. <strong style="color:#22c55e;">✅ First International client secured — now executing GTM Strategy for a Silicon Valley product (Recite App). Started with a $250 paid trial week.</strong></div>
                             </div>
                             <div class="client-deliverables">
                                 <span class="deliverable-pill">GTM Strategy</span>
@@ -2633,6 +2800,7 @@
         // ══════════════════════════════════
         const tickerItems = [
             { val: '6M+', lbl: 'LinkedIn Impressions' },
+            { val: '$250', lbl: 'First Intl. Trial Deal' },
             { val: '22K+', lbl: 'LinkedIn Followers' },
             { val: '1M+', lbl: 'X Impressions (3mo)' },
             { val: '9.2K', lbl: 'X Engagements' },
